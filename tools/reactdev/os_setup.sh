@@ -6,6 +6,8 @@ DEBIAN_FRONTEND=noninteractive
 sed -i 's@http://.*ubuntu@mirror://mirrors.ubuntu.com/mirrors.txt@g' /etc/apt/sources.list
 sed -i 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodic
 
+add-apt-repository -y ppa:webupd8team/atom
+
 # update and upgrade first!
 apt-get update
 apt-get upgrade -y
@@ -20,10 +22,22 @@ apt-get install -y git vim zsh curl wget tree tmux
 apt-get install -y gnome-shell gnome-session-flashback terminator
 dpkg --configure -a
 
-# react native setup
+# yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt-get update
+apt-get install -y yarn
+
+# nodejs
 curl -sL https://deb.nodesource.com/setup_7.x | bash -
 apt-get install -y nodejs
+
+# react native setup
 npm install -g react-native-cli
+
+# atom nuclide extras setup
+apt-get install -y atom
+apm install nuclide tool-bar sort-lines language-ocaml language-babel haskell-grammar highlight-selected language-ini language-lua merge-conflicts nuclide-format-js set-syntax
 
 # optional build tools required for npm
 apt-get install -y build-essential
@@ -33,12 +47,6 @@ apt-get install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
 
 # android dependencies
 apt-get install -y openjdk-8-jdk lib32stdc++6 lib32z1
-
-# yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-apt-get update
-apt-get install -y yarn
 
 # login screen resolution hack
 MODELINE=`gtf 1920 1080 60 | grep Modeline | sed -e 's/^[[:space:]]*//'`
@@ -60,4 +68,3 @@ Section "Screen"
 	EndSubSection
 EndSection
 EOF
-
