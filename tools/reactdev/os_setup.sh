@@ -35,9 +35,8 @@ apt-get install -y nodejs
 # react native setup
 npm install -g react-native-cli
 
-# atom nuclide extras setup
+# atom
 apt-get install -y atom
-apm install nuclide tool-bar sort-lines language-ocaml language-babel haskell-grammar highlight-selected language-ini language-lua merge-conflicts nuclide-format-js set-syntax
 
 # optional build tools required for npm
 apt-get install -y build-essential

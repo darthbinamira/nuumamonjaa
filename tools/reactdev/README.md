@@ -5,14 +5,12 @@ And it's a lot less of a hassle rather than having to reformat the host if somet
 ## Prerequisites
 * A capable machine with virtualization hardware
 * Ubuntu 16.04.2 64-bit ISO
-* VMware Player
-* Your favorite editor
+* VMware Player with VMware tools
 
 ## Bootstrap Scripts
     # run as root to install dependencies
     sudo su
     sh os_setup.sh
-    # optional but recommended
     sh watchman.sh
     exit
     
@@ -30,3 +28,9 @@ And it's a lot less of a hassle rather than having to reformat the host if somet
     
     # terminal 3: see sample code in action!
     react-native run-android
+
+## Extras
+
+    Comes with Nuclide + all the other bells and whistles
+    Flow is not installed globally, so you will have to add the path variable manually
+
