@@ -42,6 +42,8 @@ sdkmanager "system-images;android-23;google_apis;x86_64"
 echo "creating react_dev android virtual device"
 avdmanager create avd -k "system-images;android-23;default;x86_64" -n react_dev
 
+echo hw.keyboard=yes >> ${HOME}/.android/avd/react_dev.avd/config.ini
+
 # nuclide extras setup
 apm install nuclide tool-bar sort-lines language-ocaml language-babel haskell-grammar highlight-selected language-ini language-lua merge-conflicts nuclide-format-js set-syntax
 
